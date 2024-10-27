@@ -4,6 +4,10 @@
  * * google fonts を通常通り読み込むと、読み込みが完了した際にレイアウトシフトが起きてしまう
  */
 
-import { Inter } from "next/font/google"
+import { Inter, Lusitana } from "next/font/google"
 
 export const inter = Inter({ subsets: ['latin'] })
+export const lusitana = Lusitana({
+  subsets: ['latin'],
+  weight: ["400", "700"],
+})
