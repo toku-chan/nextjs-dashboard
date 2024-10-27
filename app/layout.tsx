@@ -1,3 +1,8 @@
+/**
+ * NOTE: app/layout.tsx はルートレイアウトと言われる
+ * * ルートレイアウトに追加されたUIは全てのページに共有される。
+ */
+
 import "@/app/ui/global.css";
 import { inter } from "@/app/ui/fonts";
 
@@ -8,7 +13,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body className={`${inter.className} antialiased`}>
+        {children}
+      </body>
     </html>
   );
 }
