@@ -14,6 +14,9 @@ const iconMap = {
   invoices: InboxIcon,
 };
 
+/**
+ * NOTE: カードの内容はバラバラだが、その情報をまとめて取りたい時は、表示したいコンポーネントをラッパーし、そのラッパー内で取得する処理を記載すること
+ */
 export default async function CardWrapper() {
   const {
     totalPaidInvoices,
