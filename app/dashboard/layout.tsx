@@ -6,6 +6,12 @@
 
 import SideNav from "@/app/ui/dashboard/sidenav";
 
+/**
+ * NOTE: the latest canary version of Next.js.
+ * * 現在(20241104)、pprは実験的な機能のため、canaryにバージョンを変更しないと、pprは利用できない。
+ */
+// export const experimental_ppr = true;
+
 export default function Layout({
   children
 }: {
