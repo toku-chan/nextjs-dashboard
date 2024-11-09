@@ -6,7 +6,21 @@ import { lusitana } from "@/app/ui/fonts";
 import { InvoicesTableSkeleton } from "@/app/ui/skeletons";
 import { Suspense } from "react";
 
-export default function Page() {
+export default async function Page(props: {
+  searchParams?: Promise<{
+    query?: string;
+    page?: string;
+  }>
+}) {
+  /**
+   * NOTE: ページコンポーネントは props として、 searchParams を受け取ることができる
+   * * 今回はユーザーからの入力を元に取得ではなく、初回ロードとかなので、サーバーコンポーネント側で実行される
+   * * なので、useSearchParams ではなく props を利用している
+   */
+  const searchParams = await props.searchParams;
+  const query = searchParams?.query || '';
+  const currentPage = Number(searchParams?.page) || 1;
+
   return (
     <div className="w-full">
       <div className="flex w-full items-center justify-between">
@@ -18,9 +32,9 @@ export default function Page() {
         <CreateInvoice />
       </div>
 
-      {/* <Suspense fallback={<InvoicesTableSkeleton />} key={query + currentPage}>
+      <Suspense fallback={<InvoicesTableSkeleton />} key={query + currentPage}>
         <Table query={query} currentPage={currentPage} />
-      </Suspense> */}
+      </Suspense>
 
       <div className="mt-5 flex w-full justify-center">
         {/* <Pagination totalPages={totalPages} /> */}
